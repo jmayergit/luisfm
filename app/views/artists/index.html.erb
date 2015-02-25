@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>Music</title>
+  </head>
+  <body>
+    <h1>Hello from index</h1>
+    <%@artists.each do |artist|%>
+      <li><%= artist.name %></li>
+    <% end %>
+    <%= @response %>
+
+    <%= form_for @artist do |f| %>
+      <%= f.text_field :name, :placeholder => "Favorite Artist" %><br/>
+
+      <%= f.submit %>
+    <% end %>
+
+  </body>
+</html>
