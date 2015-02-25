@@ -2,10 +2,8 @@ class ArtistsController < ApplicationController
   require 'rest-client'
 
   def index
-    @artist = Artist.new
-    # uri = "http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=cher&api_key=ddbf408cce195ed82a523b1d395e5c9b&format=json"
-    # @response = RestClient.get(uri)
     @artists = Artist.all
+    render json: @artists
   end
 
   def create
