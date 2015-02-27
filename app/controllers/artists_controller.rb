@@ -11,7 +11,7 @@ class ArtistsController < ApplicationController
 
     def getSimilar(artist)
       # last fm uri + method parameter expressed as 'package.method' + limit + key
-      uri = "http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=#{artist}&limit=3&api_key=ddbf408cce195ed82a523b1d395e5c9b&format=json"
+      uri = "http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=#{artist}&limit=10&api_key=ddbf408cce195ed82a523b1d395e5c9b&format=json"
       # simple restclient request, possible formats from api are xml, json
       response = RestClient.get(uri)
       # parse json string into json object
