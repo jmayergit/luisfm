@@ -13,7 +13,7 @@ class ArtistsController < ApplicationController
       artist.destroy
     end
 
-    def youtubeId(artist)
+    def getVideo(artist)
       artist = artist.split().join("")
       # youtube api url + weird part and snippet + type [video, playlist, channel] + limit results
       url = "https://www.googleapis.com/youtube/v3/search?part=id%2C+snippet&q=#{artist}&type=video&maxResults=1&key=AIzaSyCztszklccaoguqRDrzz-Xk5OmHJTbLkiE"
@@ -23,6 +23,8 @@ class ArtistsController < ApplicationController
       # index into json hash to retireve video id
       ytid = jsonYtube["items"][0]["id"]["videoId"]
     end
+
+    def
     # index into params hash to retrieve form parameter
     artist = params['artist']['name']
     # last fm uri + method parameter expressed as 'package.method' + limit + key
@@ -38,7 +40,7 @@ class ArtistsController < ApplicationController
     artists.each do |artist|
       @artist = Artist.new
       name = artist["name"]
-      ytid = youtubeId(name)
+      ytid = getVideo(name)
       # image size options = [small, medium, large, extralarge, mega]
       xtra_large_image = artist["image"][3]["#text"]
       mbid = artist["mbid"]
