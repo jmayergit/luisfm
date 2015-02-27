@@ -47,5 +47,7 @@ class ArtistsController < ApplicationController
       @artist.ytid = ytid
       @artist.save
     end
+    @artists = Artist.all
+    render json: @artists
   end
 end
